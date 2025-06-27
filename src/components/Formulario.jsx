@@ -23,9 +23,8 @@ const Formulario = () => {
           </Form>
         </div>
       </section>
-      <article className="border-top border-light-subtle my-4">
+      <article className="border-top border-light-subtle my-4 container-fluid">
         <ListaNoticias />
-        <div>h</div>
       </article>
     </>
   );
