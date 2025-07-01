@@ -4,15 +4,20 @@ import { useEffect, useState } from "react";
 
 const Formulario = () => {
   const [noticias, setNoticias] = useState([]);
+  const [categoria, setCategoria] = useState('')
 
   useEffect(() => {
-    obtenerNoticia();
-  }, []);
+    if(categoria){obtenerNoticia();}
+  }, [categoria]);
+
+  const selectCategoria = (e) => {
+    setCategoria(e.target.value)
+  }
 
   const obtenerNoticia = async () => {
     try {
       const respuesta = await fetch(
-        "https://newsdata.io/api/1/news?apikey=pub_39be840985964a1b9e2afa61a8e79d96&category=business,health,science,technology" 
+        `https://newsdata.io/api/1/news?apikey=pub_39be840985964a1b9e2afa61a8e79d96&category=${categoria}`
       );
       if (respuesta.status === 200) {
         const datos = await respuesta.json();
@@ -30,24 +35,25 @@ const Formulario = () => {
           <Form className="my-4">
             <Form.Group className="d-flex gap-3">
               <Form.Label>Buscar por categoria:</Form.Label>
-              <Form.Select aria-label="defaultSelect" onChange={obtenerNoticia}>
+              <Form.Select aria-label="defaultSelect" onChange={selectCategoria} value={categoria}>
                 <option>Elige una opcion</option>
-                <option value="Business">Business</option>
-                <option value="Entertainment">Entertainment</option>
-                <option value="General">General</option>
-                <option value="Health">Health</option>
-                <option value="Science">Science</option>
-                <option value="Sports">Sports</option>
-                <option value="Crime">Crime</option>
-                <option value="Domestic">Domestic</option>
-                <option value="Education">Education</option>
-                <option value="Environment">Environment</option>
-                <option value="Food">Food</option>
-                <option value="Lifestyle">Lifestyle</option>
-                <option value="Top">Top</option>
-                <option value="Tourism">Tourism</option>
-                <option value="World">World</option>
-                <option value="Other">Other</option>
+                <option value="business">Business</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="general">General</option>
+                <option value="health">Health</option>
+                <option value="science">Science</option>
+                <option value="sports">Sports</option>
+                <option value="crime">Crime</option>
+                <option value="domestic">Domestic</option>
+                <option value="education">Education</option>
+                <option value="environment">Environment</option>
+                <option value="food">Food</option>
+                <option value="lifestyle">Lifestyle</option>
+                <option value="top">Top</option>
+                <option value="tourism">Tourism</option>
+                <option value="world">World</option>
+                <option value="technology">Technology</option>
+                <option value="other">Other</option>
               </Form.Select>
             </Form.Group>
           </Form>

@@ -7,14 +7,14 @@ const Noticia = ({noticia}) => {
       <Card.Header className="text-center shadow bg-light text-dark h-100">
         <p className="fs-5 text-uppercase">{noticia.country}</p>
         <img src={noticia.image_url
-} alt={noticia.title} className="img-fluid"/>
+|| "https://hsconsultinggroup.net/wp-content/themes/consultix/images/no-image-found-360x250.png"} alt={noticia.title} className="img-fluid"/>
         <p className="lead">{noticia.title} </p>
       </Card.Header>
       <Card.Body className="text-center border-top border-bottom border-light subtle h-100">
         <p className="text-truncate">{noticia.description}</p>
       </Card.Body>
       <Card.Footer className="d-flex justify-content-center">
-        <Button>Ver noticia completa</Button>
+        <a href={noticia.link}><Button>Ver noticia completa</Button></a>
       </Card.Footer>
     </Card>
   );
