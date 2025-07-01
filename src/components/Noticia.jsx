@@ -3,15 +3,15 @@ import Button from "react-bootstrap/Button";
 
 const Noticia = ({noticia}) => {
   return (
-    <Card>
-      <Card.Header className="text-center shadow bg-light text-dark">
+    <Card className="h-100">
+      <Card.Header className="text-center shadow bg-light text-dark h-100">
+        <p className="fs-5 text-uppercase">{noticia.country}</p>
         <img src={noticia.image_url
 } alt={noticia.title} className="img-fluid"/>
-        <p className="fs-5">{noticia.country}</p>
-        <p className="fs-2 lead">{noticia.title} </p>
+        <p className="lead">{noticia.title} </p>
       </Card.Header>
-      <Card.Body className="text-center border-top border-bottom border-light subtle">
-        <p>{noticia.description}</p>
+      <Card.Body className="text-center border-top border-bottom border-light subtle h-100">
+        <p className="text-truncate">{noticia.description}</p>
       </Card.Body>
       <Card.Footer className="d-flex justify-content-center">
         <Button>Ver noticia completa</Button>
